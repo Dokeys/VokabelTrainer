@@ -29,7 +29,8 @@ class MenuBar(tkinter.Menu):
         options_bar.add_command(label="Exit", command=self.quit)
         self.add_cascade(label="Options", menu=options_bar)
 
-    def __open_dictionary_clicked(self):
+    @staticmethod
+    def __open_dictionary_clicked():
         filename = filedialog.askopenfilename(initialdir="./data/", title="Select a dictionary CSV file")
         print(filename)
         if filename != "":
