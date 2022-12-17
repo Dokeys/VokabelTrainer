@@ -39,7 +39,7 @@ class ProbabilityFactor:
             self.__foreign = new_value
 
 
-class ProbabilityVocablePicker:
+class ProbabilityVocablePicker:  # ToDo
     def __init__(self, dictionary):
 
         self.dictionary = dictionary

@@ -15,16 +15,12 @@ import app.event as event
 class App:
     def __init__(self, dictionary_file_path: str, ui: UI):
         AppListener(self)
-
-        self.vocable_picker = self.setup_dictionary(dictionary_file_path)
-
         self.ui = ui
 
         self.__show_tipp_index = 0  # wird nur in einer Funktion gebraucht
         self.__word_for_tipp = ""
 
-        self.vocable_picker.set_next_vocable()
-        self.refresh_window()
+        event.post_event("new_dictionary", dictionary_file_path)
         ui.start()
 
     @staticmethod

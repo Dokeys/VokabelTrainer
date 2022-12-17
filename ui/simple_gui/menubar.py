@@ -32,7 +32,8 @@ class MenuBar(tkinter.Menu):
     def __open_dictionary_clicked(self):
         filename = filedialog.askopenfilename(initialdir="./data/", title="Select a dictionary CSV file")
         print(filename)
-        event.post_event("new_dictionary", filename)
+        if filename != "":
+            event.post_event("new_dictionary", filename)
 
     def set_up_dictionary_language_information(self, native: str, foreign) -> None:
         # change select language radiobuttons
