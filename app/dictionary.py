@@ -27,12 +27,19 @@ def read_vocables_from_file(dictionary: Dictionary, dictionary_file_path: str) -
     with open(dictionary_file_path, "r", encoding="utf-8") as dictionary_file:
         dictionary_file.readline()  # ignore first line
         while True:
-            line = dictionary_file.readline()
-            if not line:
+            vocable_line = dictionary_file.readline()
+            if not vocable_line:
                 break
-            words = line.strip().split(";")
+            words = vocable_line.strip().split(";")
+            native_words = words[0].split(",")
+            native_words = [s.strip() for s in
+                            native_words]  # remove spaces and tabs from the start and end of a string
+
+            foreign_words = words[1].split(",")
+            foreign_words = [s.strip() for s in foreign_words]
+
             dictionary.vocables.append(
-                Vocable(native=words[0].split(","), foreign=words[1].split(",")))
+                Vocable(native=native_words, foreign=foreign_words))
 
 
 def read_dictionary(file_path: str) -> Dictionary:
